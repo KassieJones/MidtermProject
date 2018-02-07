@@ -1,0 +1,12 @@
+To Kill a Mockingbird,Harper Lee,Available,Two Weeks,Fiction
+Pride & Prejudice,Jane Austen,Available,Two Weeks,Fiction
+Animal Farm,George Orwell,Available,Two Weeks,Fiction
+The Book Thief, Markus Zusak, Available, Two Weeks, Fiction
+Lord of the Flies, Willian Golding, Available, Two Weeks, Fiction
+Wuthering Heights, Emily Bronte, Available, Two Weeks, Fiction
+A Brief History of Time, Stephen Hawking, Available, Two Weeks, Nonfiction
+No Logo, Naomi Klein, Available, Two Weeks, Nonfiction
+Dispatches, Michael Herr, Available, Two Weeks, Nonfiction
+Hiroshima, John Hersey, Available, Two Weeks, Nonfiction
+The Columbia Encyclopedia, Paul Lagasse, Available, Two Weeks, Nonfiction
+Roget's Thesaurus, Peter Mark Roget, Available, Two Weeks, Nonfiction
