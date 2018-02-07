@@ -3,12 +3,18 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.io.Writer;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.Date;
+
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
 public class Book {
 	private String title;
@@ -102,6 +108,22 @@ public class Book {
 
 	}
 	
+	public static ArrayList<Book> readFromFile(String filename) {
+		Gson gson = new Gson();
+		BufferedReader br;
+		try {
+			br = new BufferedReader(new FileReader("E:file.json"));
+			Book newBook = gson.fromJson(br, Book.class);
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
+		return null;
+		//return bookImport;
+	}
+	
 	
 	
 	public static void writeToFile(String name) {
@@ -122,6 +144,21 @@ public class Book {
 				e1.printStackTrace();
 			}
 		}
+	}
+	
+	public static void writeToFile(ArrayList<Book> list) {
+		
+			Writer writer;
+			try {
+				writer = new FileWriter("Library.json");
+				Gson gson = new GsonBuilder().create();
+				gson.toJson(list, writer);
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				//e.printStackTrace();
+			}
+		
+		
 	}
 
 	public static void createFile(String fileString) {

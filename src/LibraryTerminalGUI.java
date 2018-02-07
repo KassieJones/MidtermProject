@@ -1,6 +1,6 @@
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
-import java.util.Date;
+import java.util.ArrayList;
 
 import javax.swing.JFrame;
 import javax.swing.JMenu;
@@ -75,10 +75,12 @@ public class LibraryTerminalGUI {
 		
 		
 		
-		
+		ArrayList<Book> library = new ArrayList<Book>();
 		table = new JTable();
 		table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		frame.getContentPane().add(table, BorderLayout.CENTER);
+		
+		
 		
 		
 		
