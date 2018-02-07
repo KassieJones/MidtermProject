@@ -1,5 +1,6 @@
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
+import java.util.Date;
 
 import javax.swing.JFrame;
 import javax.swing.JMenu;
@@ -58,6 +59,9 @@ public class LibraryTerminalGUI {
 		JMenuItem menuSearchKW = new JMenuItem("By Title Keyword");
 		JMenuItem menuSearchAuthor = new JMenuItem("By Author");
 		JMenu menuSearch = new JMenu("Search");
+		JMenu menuAdd = new JMenu("Add Book(s)");
+		JMenuItem menuAddOne = new JMenuItem("Add One");
+		JMenuItem menuAddFile = new JMenuItem("Add from File");
 		
 		menuBar.add(menuExit);
 		menuBar.add(menuCheckOut);
@@ -65,9 +69,9 @@ public class LibraryTerminalGUI {
 		menuBar.add(menuSearch);
 		menuSearch.add(menuSearchAuthor);
 		menuSearch.add(menuSearchKW);
-		
-		
-		
+		menuBar.add(menuAdd);
+		menuAdd.add(menuAddOne);
+		menuAdd.add(menuAddFile);
 		
 		
 		
@@ -75,6 +79,10 @@ public class LibraryTerminalGUI {
 		table = new JTable();
 		table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		frame.getContentPane().add(table, BorderLayout.CENTER);
+		
+		
+		
+		
 	}
 
 }
