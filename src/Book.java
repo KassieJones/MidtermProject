@@ -74,6 +74,11 @@ public class Book {
 		return String.format("Title: %-10s Author: %-10s Genre: %-10s Status: %-10s Due Date: %-10s", title, author,
 				genre, status, dueDate);
 	}
+	
+	public void returnBook(Book book) {
+			book.setStatus(true);
+				}
+
 
 
 	public static void readFromFile() {
@@ -134,4 +139,8 @@ public class Book {
 	
 	
 	
+	public void checkOutBook(Book book) {
+		book.setStatus(false);
+	}
 }
+
