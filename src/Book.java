@@ -268,34 +268,45 @@ public static void createFile(String fileString) {
 		
 
 		public static void authorSearch(ArrayList<Book> bookArrayList, Scanner input) {
+			Scanner scan = new Scanner (System.in);
 			System.out.print("Please enter an author name: ");
 			String author = input.nextLine();
+			System.out.println();
 			System.out.format("%-30s%-30s%-30s", "TITLE", "AUTHOR", "STATUS");
 			System.out.println("");
 		//	int repeat = 0;
+			Book b = null;
 			for (int i = 0; i < bookArrayList.size(); i++) {
-				Book b = bookArrayList.get(i);
+				b = bookArrayList.get(i);
 				if (((b.getAuthor()).toLowerCase()).contains(author.toLowerCase())) {
 					System.out.format("%-30s%-30s%-12s", b.getTitle(), b.getAuthor(),  b.getStatus());
 					System.out.println("");
 		//			repeat = 1;
+					
+				//	CheckReturn.checkoutBook(b, scan);
 				} 
-				else {
+				if (!((b.getAuthor()).toLowerCase()).contains(author.toLowerCase())) {
 					System.out.println("I'm sorry, there are no books by that author currently in the library.");
 				}
+				
+				
 			}
+			
+			
+			CheckReturn.checkoutBook(b, scan);
 }
 
 		
 		public static void keywordSearch(ArrayList<Book> bookArrayList, Scanner input) {
 			System.out.print("Please enter a search keyword: ");
-			String author = input.nextLine();
+			String title = input.nextLine();
+			System.out.println();
 			System.out.format("%-30s%-30s%-30s", "TITLE", "AUTHOR", "STATUS");
 			System.out.println("");
 		//	int repeat = 0;
 			for (int i = 0; i < bookArrayList.size(); i++) {
 				Book b = bookArrayList.get(i);
-				if (((b.getAuthor()).toLowerCase()).contains(author.toLowerCase())) {
+				if (((b.getTitle()).toLowerCase()).contains(title.toLowerCase())) {
 					System.out.format("%-30s%-30s%-12s", b.getTitle(), b.getAuthor(),  b.getStatus());
 					System.out.println("");
 		//			repeat = 1;
