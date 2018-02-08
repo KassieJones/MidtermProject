@@ -284,8 +284,8 @@ public class Book {
 
 			CheckReturn.checkoutBook(b, scan);
 			LocalDate dueDate = LocalDate.now().plusWeeks(2);
-			System.out.println(dueDate.toString());
-}
+			b.setDueDate(dueDate.toString());
+			System.out.println(b.getDueDate());}
 
 		
 		public static void keywordSearch(ArrayList<Book> bookArrayList, Scanner input) {
@@ -333,9 +333,7 @@ public class Book {
 				}
 			}
 			CheckReturn.returnBook(b, scan);
-			LocalDate dueDate = LocalDate.now().plusWeeks(2);
-			b.setDueDate(dueDate.toString());
-			System.out.println(b.getDueDate());
+			
 }
 		
 		
