@@ -1,6 +1,11 @@
+package console;
 
 import java.util.ArrayList;
 import java.util.Scanner;
+
+import model.Book;
+import model.CheckReturn;
+import utility.Validator;
 
 public class LibraryTerminalApp {
 

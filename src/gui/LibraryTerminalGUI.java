@@ -1,3 +1,4 @@
+package gui;
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
 import java.util.ArrayList;
@@ -8,6 +9,9 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
+import javax.swing.table.DefaultTableModel;
+
+import model.Book;
 
 public class LibraryTerminalGUI {
 
@@ -80,7 +84,7 @@ public class LibraryTerminalGUI {
 		table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		frame.getContentPane().add(table, BorderLayout.CENTER);
 		
-		
+		DefaultTableModel model = new DefaultTableModel();
 		
 		
 		
