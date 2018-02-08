@@ -149,8 +149,6 @@ public class Book {
 	}
 	
 	public static ArrayList<Book> readFromFile(String filename) {
-		
-		System.out.println("Reading File...");
 		ArrayList<Book> library = new ArrayList<Book>();
 		Gson gson = new Gson();
 		JsonParser jsonParser = new JsonParser();
