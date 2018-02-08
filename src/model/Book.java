@@ -347,8 +347,8 @@ public class Book {
 			String bookAuthor = input.nextLine();
 			System.out.print("Please enter the genre of the book:");
 			String bookGenre = input.nextLine();
-			String status = null;
-			String dueDate = null;
+			String status = "AVAILABLE";
+			String dueDate = " ";
 			
 			bookArrayList.add(new Book (bookTitle, bookAuthor, status, dueDate, bookGenre));
 				
