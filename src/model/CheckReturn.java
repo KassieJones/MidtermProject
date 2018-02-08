@@ -1,4 +1,5 @@
 package model;
+import java.time.LocalDate;
 import java.util.Scanner;
 
 public class CheckReturn {
@@ -10,7 +11,13 @@ public class CheckReturn {
 
 		if (checkout.equalsIgnoreCase("y")) {
 			book.setStatus("UNAVAILABLE");
+			
+			LocalDate dueDate = LocalDate.now().plusWeeks(2);
+
+			book.setDueDate(dueDate.toString());
+			System.out.println("Please return the book by " + book.getDueDate() + ". ");
 		}
+		
 	}
 
 	public static void returnBook(Book book, Scanner input) {
@@ -20,6 +27,7 @@ public class CheckReturn {
 
 		if (checkout.equalsIgnoreCase("y")) {
 			book.setStatus("AVAILABLE");
+			book.setDueDate(" ");
 		}
 	}
 }
