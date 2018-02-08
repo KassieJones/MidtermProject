@@ -17,8 +17,6 @@ public class LibraryTerminalApp {
 		ArrayList<Book> libraryList = new ArrayList<Book>();
 		libraryList = Book.readFromFile("Library.json");
 		
-		
-
 		System.out.println("Welcome to the Grand Circus Library!");
 		System.out.println();
 
@@ -30,29 +28,42 @@ public class LibraryTerminalApp {
 			System.out.println();
 			choice = Validator.getInt(scan,
 					" 1 - Refresh Catalog of Books\n 2 - Search Books by Author\n 3 - Search Books by Title Keyword\n 4 - Return a Book\n 5 - Add New Book to Library\n 6 - Quit",
-					1, 5);
+					1, 6);
 			System.out.println();
 
 			if (choice == 1) {
+				clearScreen();
 				display(libraryList);
+				Book.writeToFile(libraryList);
 			}
 			if (choice == 2) {
 				Book.authorSearch(libraryList, scan);
+				clearScreen();
+				display(libraryList);
+				Book.writeToFile(libraryList);
 			}
 			if (choice == 3) {
 				Book.keywordSearch(libraryList, scan);
+				clearScreen();
+				display(libraryList);
+				Book.writeToFile(libraryList);
 			}
 			if (choice == 4) {
-
 				Book.returnBook(libraryList, scan);
+				clearScreen();
+				display(libraryList);
+				Book.writeToFile(libraryList);
 			}
 			if (choice == 5) {
-				
 				Book.addBook(libraryList, scan);
+				clearScreen();
+				display(libraryList);
+				Book.writeToFile(libraryList);
 			}
 			
+			
 		}	
-			System.out.println();
+			clearScreen();
 			System.out.println("Thank you for visiting to Grand Circus Library!\nGoodbye!");
 			
 			Book.writeToFile(libraryList);
@@ -70,4 +81,9 @@ public class LibraryTerminalApp {
 		return null;
 	}
 
+	public static void clearScreen() {
+		for (int i = 0; i < 50; i++) {
+			System.out.println(" ");
+		}	
+	}
 }

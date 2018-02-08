@@ -27,6 +27,7 @@ public class CheckReturn {
 
 		if (checkout.equalsIgnoreCase("y")) {
 			book.setStatus("AVAILABLE");
+			book.setDueDate(" ");
 		}
 	}
 }
