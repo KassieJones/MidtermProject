@@ -264,7 +264,6 @@ public class Book {
 			System.out.println();
 			System.out.format("%-30s%-30s%-30s", "TITLE", "AUTHOR", "STATUS");
 			System.out.println("");
-		//	int repeat = 0;
 			Book b = null;
 			for (int i = 0; i < bookArrayList.size(); i++) {
 				b = bookArrayList.get(i);
@@ -272,9 +271,6 @@ public class Book {
 					System.out.format("%-30s%-30s%-12s", b.getTitle(), b.getAuthor(),  b.getStatus());
 					System.out.println("");
 					break;
-		//			repeat = 1;
-					
-				//	CheckReturn.checkoutBook(b, scan);
 				} 
 				if (!((b.getAuthor()).toLowerCase()).contains(author.toLowerCase())) {
 					//System.out.println("I'm sorry, there are no books by that author currently in the library.");
@@ -295,7 +291,6 @@ public class Book {
 			System.out.println();
 			System.out.format("%-30s%-30s%-30s", "TITLE", "AUTHOR", "STATUS");
 			System.out.println("");
-		//	int repeat = 0;
 			Book b = null;
 			for (int i = 0; i < bookArrayList.size(); i++) {
 				b = bookArrayList.get(i);
@@ -303,7 +298,6 @@ public class Book {
 					System.out.format("%-30s%-30s%-12s", b.getTitle(), b.getAuthor(),  b.getStatus());
 					System.out.println("");
 					break;
-		//			repeat = 1;
 				} 
 				else {
 					//System.out.println("I'm sorry, there are no books with that keyword currently in the library.");
