@@ -285,7 +285,7 @@ public class Book {
 			CheckReturn.checkoutBook(b, scan);
 			LocalDate dueDate = LocalDate.now().plusWeeks(2);
 			b.setDueDate(dueDate.toString());
-			System.out.println(b.getDueDate());}
+			System.out.println("Please return the book by " + b.getDueDate() + ". ");}
 
 
 		
@@ -312,7 +312,7 @@ public class Book {
 			LocalDate dueDate = LocalDate.now().plusWeeks(2);
 
 			b.setDueDate(dueDate.toString());
-			System.out.println(b.getDueDate());}		
+			System.out.println("Please return the book by " + b.getDueDate() + ". ");}		
 
 		
 		
