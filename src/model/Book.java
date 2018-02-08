@@ -251,47 +251,67 @@ public class Book {
 	public Book withHandsOff(Boolean handsOff) {
 		this.handsOff = handsOff;
 		return this;
+
 	}
 
 	// End of JSON methods
 
-	public static void authorSearch(ArrayList<Book> bookArrayList, Scanner input) {
-		Scanner scan = new Scanner(System.in);
-		System.out.print("Please enter an author name: ");
-		String author = input.nextLine();
-		System.out.println();
-		System.out.format("%-30s%-30s%-30s", "TITLE", "AUTHOR", "STATUS");
-		System.out.println("");
-		Book b = null;
-		for (int i = 0; i < bookArrayList.size(); i++) {
-			b = bookArrayList.get(i);
-			if (((b.getAuthor()).toLowerCase()).contains(author.toLowerCase())) {
-				System.out.format("%-30s%-30s%-12s", b.getTitle(), b.getAuthor(), b.getStatus());
-				System.out.println("");
+		
+		public static void authorSearch(ArrayList<Book> bookArrayList, Scanner input) {
+			Scanner scan = new Scanner (System.in);
+			System.out.print("Please enter an author name: ");
+			String author = input.nextLine();
+			System.out.println();
+			System.out.format("%-30s%-30s%-30s", "TITLE", "AUTHOR", "STATUS");
+			System.out.println("");
+		//	int repeat = 0;
+			Book b = null;
+			for (int i = 0; i < bookArrayList.size(); i++) {
+				b = bookArrayList.get(i);
+				if (((b.getAuthor()).toLowerCase()).contains(author.toLowerCase())) {
+					System.out.format("%-30s%-30s%-12s", b.getTitle(), b.getAuthor(),  b.getStatus());
+					System.out.println("");
+					break;
+		//			repeat = 1;
+					
+				//	CheckReturn.checkoutBook(b, scan);
+				} 
+				if (!((b.getAuthor()).toLowerCase()).contains(author.toLowerCase())) {
+					//System.out.println("I'm sorry, there are no books by that author currently in the library.");
+				}
+				
+				
 			}
-			if (!((b.getAuthor()).toLowerCase()).contains(author.toLowerCase())) {
-				System.out.println("I'm sorry, there are no books by that author currently in the library.");
-			}
-		}
+			
+			
+			CheckReturn.checkoutBook(b, scan);
+}
 
-		CheckReturn.checkoutBook(b, scan);
-	}
-
-	public static void keywordSearch(ArrayList<Book> bookArrayList, Scanner input) {
-		System.out.print("Please enter a search keyword: ");
-		String title = input.nextLine();
-		System.out.println();
-		System.out.format("%-30s%-30s%-30s", "TITLE", "AUTHOR", "STATUS");
-		System.out.println("");
-		for (int i = 0; i < bookArrayList.size(); i++) {
-			Book b = bookArrayList.get(i);
-			if (((b.getTitle()).toLowerCase()).contains(title.toLowerCase())) {
-				System.out.format("%-30s%-30s%-12s", b.getTitle(), b.getAuthor(), b.getStatus());
-				System.out.println("");
-			} else {
-				System.out.println("I'm sorry, there are no books with that keyword currently in the library.");
+		
+		public static void keywordSearch(ArrayList<Book> bookArrayList, Scanner input) {
+			Scanner scan = new Scanner(System.in);
+			System.out.print("Please enter a search keyword: ");
+			String title = input.nextLine();
+			System.out.println();
+			System.out.format("%-30s%-30s%-30s", "TITLE", "AUTHOR", "STATUS");
+			System.out.println("");
+		//	int repeat = 0;
+			Book b = null;
+			for (int i = 0; i < bookArrayList.size(); i++) {
+				b = bookArrayList.get(i);
+				if (((b.getTitle()).toLowerCase()).contains(title.toLowerCase())) {
+					System.out.format("%-30s%-30s%-12s", b.getTitle(), b.getAuthor(),  b.getStatus());
+					System.out.println("");
+					break;
+		//			repeat = 1;
+				} 
+				else {
+					//System.out.println("I'm sorry, there are no books with that keyword currently in the library.");
+				}
 			}
-		}
-	}
+			CheckReturn.checkoutBook(b, scan);
+}		
+		
+		
 
 }
