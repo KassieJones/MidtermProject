@@ -7,6 +7,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.Writer;
+import java.lang.reflect.Type;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -14,17 +15,22 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Scanner;
+import java.util.List;
+
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonParser;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
 
 public class Book {
 /*	private String title;
 	private String author;
 	private boolean status;
-	private Date dueDate;
+	private String dueDate;
 	private String genre;
 	*/
 	@SerializedName("rating")
@@ -41,7 +47,7 @@ public class Book {
 	public String status;
 	@SerializedName("dueDate")
 	@Expose
-	public Date dueDate;
+	public String dueDate;
 	@SerializedName("genre")
 	@Expose
 	public String genre;
@@ -53,7 +59,7 @@ public class Book {
 
 	}
 
-	public Book(String title, String author, String status, Date dueDate, String genre) {
+	public Book(String title, String author, String status, String dueDate, String genre) {
 		this.title = title;
 		this.author = author;
 		this.status = status;
@@ -82,19 +88,22 @@ public class Book {
 	//}
 
 	
+	public String getStatus() {
+		return status;
+	}
+	
 	public void setStatus(String status) {
 		this.status = status;
 	}
 
-	public String getStatus () {
-		return status;
-	}
-	
-	public Date getDueDate() {
+
+
+	public String getDueDate() {
+
 		return dueDate;
 	}
 
-	public void setDueDate(Date dueDate) {
+	public void setDueDate(String dueDate) {
 		this.dueDate = dueDate;
 	}
 
@@ -140,19 +149,27 @@ public class Book {
 	}
 	
 	public static ArrayList<Book> readFromFile(String filename) {
+		
+		System.out.println("Reading File...");
+		ArrayList<Book> library = new ArrayList<Book>();
 		Gson gson = new Gson();
+		JsonParser jsonParser = new JsonParser();
 		BufferedReader br;
 		try {
-			br = new BufferedReader(new FileReader("E:file.json"));
-			Book newBook = gson.fromJson(br, Book.class);
+			br = new BufferedReader(new FileReader(filename));
+			JsonElement jsonElement = jsonParser.parse(br);
+			Type type = new TypeToken<List<Book>>() {}.getType();
+			
+			library = gson.fromJson(jsonElement, type);
+			
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
-		
-		return null;
-		//return bookImport;
+
+		return library;
+
 	}
 	
 	
@@ -177,22 +194,23 @@ public class Book {
 		}
 	}
 	
-	public static void writeToFile(ArrayList<Book> list) {
+public static void writeToFile(ArrayList<Book> list) {
 		
-			Writer writer;
-			try {
-				writer = new FileWriter("Library.json");
-				Gson gson = new GsonBuilder().create();
-				gson.toJson(list, writer);
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				//e.printStackTrace();
-			}
-		
-		
+		Writer writer;
+		try {
+			writer = new FileWriter("Library.json");
+			Gson gson = new GsonBuilder().create();
+			writer.write(gson.toJson(list));
+			writer.close();
+			
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			//e.printStackTrace();
+		}
 	}
+		
 
-	public static void createFile(String fileString) {
+public static void createFile(String fileString) {
 		Path filePath = Paths.get(fileString);
 		if (Files.notExists(filePath)) {
 			try {
@@ -233,7 +251,7 @@ public class Book {
 		return this;
 		}
 
-		public Book withDueDate(Date dueDate) {
+		public Book withDueDate(String dueDate) {
 		this.dueDate = dueDate;
 		return this;
 		}
