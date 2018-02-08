@@ -277,11 +277,11 @@ public class Book {
 				}
 			}
 			
-<<<<<<< HEAD
+
 			
 			
-=======
->>>>>>> cf8812dc85a14d9cb829cbe19e7ee7fa535939e1
+
+
 			CheckReturn.checkoutBook(b, scan);
 			LocalDate dueDate = LocalDate.now().plusWeeks(2);
 			System.out.println(dueDate.toString());
