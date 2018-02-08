@@ -11,6 +11,7 @@ public class CheckReturn {
 		if (checkout.equalsIgnoreCase("y")) {
 			book.setStatus("UNAVAILABLE");
 		}
+		
 	}
 
 	public static void returnBook(Book book, Scanner input) {

@@ -16,6 +16,8 @@ public class LibraryTerminalApp {
 
 		ArrayList<Book> libraryList = new ArrayList<Book>();
 		libraryList = Book.readFromFile("Library.json");
+		
+		
 
 		System.out.println("Welcome to the Grand Circus Library!");
 		System.out.println();
@@ -23,11 +25,11 @@ public class LibraryTerminalApp {
 		display(libraryList);
 		System.out.println();
 
-		while (choice != 5) {
+		while (choice != 6) {
 
 			System.out.println();
 			choice = Validator.getInt(scan,
-					" 1 - Refresh Catalog of Books\n 2 - Search Books by Author\n 3 - Search Books by Title Keyword\n 4 - Return a Book\n 5 - Quit",
+					" 1 - Refresh Catalog of Books\n 2 - Search Books by Author\n 3 - Search Books by Title Keyword\n 4 - Return a Book\n 5 - Add New Book to Library\n 6 - Quit",
 					1, 5);
 			System.out.println();
 
@@ -43,6 +45,10 @@ public class LibraryTerminalApp {
 			if (choice == 4) {
 
 				Book.returnBook(libraryList, scan);
+			}
+			if (choice == 5) {
+				
+				Book.addBook(libraryList, scan);
 			}
 			
 		}	
