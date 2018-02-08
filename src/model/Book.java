@@ -1,4 +1,5 @@
 package model;
+
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -18,7 +19,6 @@ import java.util.Date;
 import java.util.Scanner;
 import java.util.List;
 
-
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonElement;
@@ -28,12 +28,10 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.reflect.TypeToken;
 
 public class Book {
-/*	private String title;
-	private String author;
-	private boolean status;
-	private String dueDate;
-	private String genre;
-	*/
+	/*
+	 * private String title; private String author; private boolean status; private
+	 * String dueDate; private String genre;
+	 */
 	@SerializedName("rating")
 	@Expose
 	public Integer rating;
@@ -84,20 +82,17 @@ public class Book {
 		this.author = author;
 	}
 
-	//public boolean isStatus() {
-	//	return status;
-	//}
+	// public boolean isStatus() {
+	// return status;
+	// }
 
-	
 	public String getStatus() {
 		return status;
 	}
-	
+
 	public void setStatus(String status) {
 		this.status = status;
 	}
-
-
 
 	public String getDueDate() {
 
@@ -121,12 +116,10 @@ public class Book {
 		return String.format("Title: %-10s Author: %-10s Genre: %-10s Status: %-10s Due Date: %-10s", title, author,
 				genre, status, dueDate);
 	}
-	
+
 	public void returnBook(Book book) {
-			//book.setStatus(true);
-				}
-
-
+		// book.setStatus(true);
+	}
 
 	public static void readFromFile() {
 		Path writeFile = Paths.get("E:file.jsont");
@@ -148,7 +141,7 @@ public class Book {
 		}
 
 	}
-	
+
 	public static ArrayList<Book> readFromFile(String filename) {
 		ArrayList<Book> library = new ArrayList<Book>();
 		Gson gson = new Gson();
@@ -157,59 +150,56 @@ public class Book {
 		try {
 			br = new BufferedReader(new FileReader(filename));
 			JsonElement jsonElement = jsonParser.parse(br);
-			Type type = new TypeToken<List<Book>>() {}.getType();
-			
+			Type type = new TypeToken<List<Book>>() {
+			}.getType();
+
 			library = gson.fromJson(jsonElement, type);
-			
+
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
 
 		return library;
 
 	}
-	
-	
-	
+
 	public static void writeToFile(String name) {
 		Path writeFile = Paths.get("E:file.json");
 		File file = writeFile.toFile();
 
 		try {
 			PrintWriter out = new PrintWriter(new FileOutputStream(file, true));
-			out.println( name);
+			out.println(name);
 			out.close();
 		} catch (FileNotFoundException e) {
 			createFile("E:file.json");
 			try {
 				PrintWriter out = new PrintWriter(new FileOutputStream(file, true));
-				out.println( name);
+				out.println(name);
 				out.close();
 			} catch (FileNotFoundException e1) {
 				e1.printStackTrace();
 			}
 		}
 	}
-	
-public static void writeToFile(ArrayList<Book> list) {
-		
+
+	public static void writeToFile(ArrayList<Book> list) {
+
 		Writer writer;
 		try {
 			writer = new FileWriter("Library.json");
 			Gson gson = new GsonBuilder().create();
 			writer.write(gson.toJson(list));
 			writer.close();
-			
+
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
-			//e.printStackTrace();
+			// e.printStackTrace();
 		}
 	}
-		
 
-public static void createFile(String fileString) {
+	public static void createFile(String fileString) {
 		Path filePath = Paths.get(fileString);
 		if (Files.notExists(filePath)) {
 			try {
@@ -221,53 +211,52 @@ public static void createFile(String fileString) {
 			}
 		}
 	}
-	
-	
-	
+
 	public void checkOutBook(Book book) {
-		//book.setStatus(false);
+		// book.setStatus(false);
 	}
-	
+
 	// Methods for Importing JSON file
-	
+
 	public Book withRating(Integer rating) {
 		this.rating = rating;
 		return this;
-		}
+	}
 
-		public Book withTitle(String title) {
+	public Book withTitle(String title) {
 		this.title = title;
 		return this;
-		}
+	}
 
-		public Book withAuthor(String author) {
+	public Book withAuthor(String author) {
 		this.author = author;
 		return this;
-		}
+	}
 
-		public Book withStatus(Boolean status) {
-		//this.status = status;
+	public Book withStatus(Boolean status) {
+		// this.status = status;
 		return this;
-		}
+	}
 
-		public Book withDueDate(String dueDate) {
+	public Book withDueDate(String dueDate) {
 		this.dueDate = dueDate;
 		return this;
-		}
+	}
 
-		public Book withGenre(String genre) {
+	public Book withGenre(String genre) {
 		this.genre = genre;
 		return this;
-		}
+	}
 
-		public Book withHandsOff(Boolean handsOff) {
+	public Book withHandsOff(Boolean handsOff) {
 		this.handsOff = handsOff;
 		return this;
-		}
-		
-		// End of JSON methods
-		
 
+	}
+
+	// End of JSON methods
+
+		
 		public static void authorSearch(ArrayList<Book> bookArrayList, Scanner input) {
 			Scanner scan = new Scanner (System.in);
 			System.out.print("Please enter an author name: ");
@@ -275,7 +264,6 @@ public static void createFile(String fileString) {
 			System.out.println();
 			System.out.format("%-30s%-30s%-30s", "TITLE", "AUTHOR", "STATUS");
 			System.out.println("");
-		//	int repeat = 0;
 			Book b = null;
 			for (int i = 0; i < bookArrayList.size(); i++) {
 				b = bookArrayList.get(i);
@@ -283,19 +271,17 @@ public static void createFile(String fileString) {
 					System.out.format("%-30s%-30s%-12s", b.getTitle(), b.getAuthor(),  b.getStatus());
 					System.out.println("");
 					break;
-		//			repeat = 1;
-					
-				//	CheckReturn.checkoutBook(b, scan);
 				} 
 				if (!((b.getAuthor()).toLowerCase()).contains(author.toLowerCase())) {
 					//System.out.println("I'm sorry, there are no books by that author currently in the library.");
 				}
-				
-				
 			}
 			
+<<<<<<< HEAD
 			
 			
+=======
+>>>>>>> cf8812dc85a14d9cb829cbe19e7ee7fa535939e1
 			CheckReturn.checkoutBook(b, scan);
 			LocalDate dueDate = LocalDate.now().plusWeeks(2);
 			System.out.println(dueDate.toString());
@@ -309,7 +295,6 @@ public static void createFile(String fileString) {
 			System.out.println();
 			System.out.format("%-30s%-30s%-30s", "TITLE", "AUTHOR", "STATUS");
 			System.out.println("");
-		//	int repeat = 0;
 			Book b = null;
 			for (int i = 0; i < bookArrayList.size(); i++) {
 				b = bookArrayList.get(i);
@@ -317,7 +302,6 @@ public static void createFile(String fileString) {
 					System.out.format("%-30s%-30s%-12s", b.getTitle(), b.getAuthor(),  b.getStatus());
 					System.out.println("");
 					break;
-		//			repeat = 1;
 				} 
 				else {
 					//System.out.println("I'm sorry, there are no books with that keyword currently in the library.");
@@ -329,4 +313,28 @@ public static void createFile(String fileString) {
 }		
 		
 		
+		public static void returnBook(ArrayList<Book> bookArrayList, Scanner input) {
+			Scanner scan = new Scanner(System.in);
+			System.out.print("Please enter the title of the book you are returning: ");
+			String title = input.nextLine();
+			System.out.println();
+			System.out.format("%-30s%-30s%-30s", "TITLE", "AUTHOR", "STATUS");
+			System.out.println("");
+			Book b = null;
+			for (int i = 0; i < bookArrayList.size(); i++) {
+				b = bookArrayList.get(i);
+				if (((b.getTitle()).toLowerCase()).contains(title.toLowerCase())) {
+					System.out.format("%-30s%-30s%-12s", b.getTitle(), b.getAuthor(),  b.getStatus());
+					System.out.println("");
+					break;
+				} 
+				else {
+					//System.out.println("I'm sorry, there are no books with that keyword currently in the library.");
+				}
+			}
+			CheckReturn.returnBook(b, scan);
+}
+		
+		
+
 }
