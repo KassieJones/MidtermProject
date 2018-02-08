@@ -276,11 +276,17 @@ public class Book {
 					//System.out.println("I'm sorry, there are no books by that author currently in the library.");
 				}
 			}
+	
+
+			
+			
+
 
 			CheckReturn.checkoutBook(b, scan);
 			LocalDate dueDate = LocalDate.now().plusWeeks(2);
-			System.out.println(dueDate.toString());
-}
+			b.setDueDate(dueDate.toString());
+			System.out.println(b.getDueDate());}
+
 
 		
 		public static void keywordSearch(ArrayList<Book> bookArrayList, Scanner input) {
@@ -304,8 +310,10 @@ public class Book {
 			}
 			CheckReturn.checkoutBook(b, scan);
 			LocalDate dueDate = LocalDate.now().plusWeeks(2);
-			System.out.println(dueDate.toString());
-}		
+
+			b.setDueDate(dueDate.toString());
+			System.out.println(b.getDueDate());}		
+
 		
 		
 		public static void returnBook(ArrayList<Book> bookArrayList, Scanner input) {
@@ -328,6 +336,7 @@ public class Book {
 				}
 			}
 			CheckReturn.returnBook(b, scan);
+			
 }
 		
 		public static void addBook (ArrayList<Book> bookArrayList, Scanner input) {
