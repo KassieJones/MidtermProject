@@ -45,7 +45,7 @@ public class LibraryTerminalApp {
 				System.out.println();
 			//	String bookTitleRT = Validator.getString(scan, "Which book would you like to return: ");
 				display(libraryList);
-				CheckReturn.returnBook(book, input);
+				//CheckReturn.returnBook(book, input);
 			}
 		}
 		System.out.println();
