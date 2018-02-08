@@ -1,3 +1,4 @@
+package utility;
 import java.util.Scanner;
 
 // You can add your own validation methods if needed
