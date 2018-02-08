@@ -1,5 +1,5 @@
-import java.util.Date;
-import java.util.LinkedList;
+
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class LibraryTerminalApp {
@@ -9,6 +9,8 @@ public class LibraryTerminalApp {
 		Scanner scan = new Scanner(System.in);
 		int choice = 2;
 
+		ArrayList<Book> libraryList = new ArrayList<Book>();
+		libraryList = Book.readFromFile("Library.json");
 
 		System.out.println("Welcome to the Grand Circus Library Terminal!");
 		
@@ -25,13 +27,15 @@ public class LibraryTerminalApp {
 			}
 			if (choice == 2) {
 				System.out.println();
-				String authorName = Validator.getString(scan, "Enter the author name: ");
+			//	String authorName = Validator.getString(scan, "Enter the author name: ");
+				Book.authorSearch(libraryList, scan);
 				
 			}
 			
 			if (choice == 3) {
 				System.out.println();
-				String titleKeyword = Validator.getString(scan, "Enter the title keyword: ");
+			//	String titleKeyword = Validator.getString(scan, "Enter the title keyword: ");
+				Book.keywordSearch(libraryList, scan);
 				
 			}
 			
@@ -57,7 +61,10 @@ public class LibraryTerminalApp {
 		
 	}
 	
-	
+	public ArrayList<Book> makeList (String name) {
+		ArrayList<Book> bookList = new ArrayList<Book>();
+		return null;
+	}
 	
 	
 	
@@ -65,7 +72,7 @@ public class LibraryTerminalApp {
 		
 		LinkedList<Book> books = new LinkedList<Book>();
 	        books.add("To Kill a Mockingbird", "Harper Lee");
-	        books.add("Pride & Prejuidice", "Jane Austen");
+	        books.add("Pride & Prejudice", "Jane Austen");
 	        books.add("Animal Farm", "George Orwell");
 	        books.add("The Book Theif", "Markus Zusak");
 	        books.add("Lord of the Flies", "William Golding");
