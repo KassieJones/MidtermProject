@@ -38,9 +38,11 @@ public class LibraryTerminalApp {
 			}
 			if (choice == 4) {
 				System.out.println();
-			//	String bookTitleRT = Validator.getString(scan, "Which book would you like to return: ");
+				System.out.println("Which book would you like to return?");
+				System.out.println();
 				display(libraryList);
-				CheckReturn.returnBook(book, input);
+				
+				
 			}
 		}
 		System.out.println();
