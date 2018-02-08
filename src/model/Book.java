@@ -277,11 +277,6 @@ public class Book {
 				}
 			}
 	
-
-			
-			
-
-
 			CheckReturn.checkoutBook(b, scan);
 			}
 
