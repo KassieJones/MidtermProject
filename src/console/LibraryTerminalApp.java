@@ -42,8 +42,7 @@ public class LibraryTerminalApp {
 			}
 			if (choice == 4) {
 
-				// return a book?
-
+				Book.returnBook(libraryList, scan);
 			}
 			
 		}	

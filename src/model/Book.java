@@ -275,10 +275,7 @@ public class Book {
 				if (!((b.getAuthor()).toLowerCase()).contains(author.toLowerCase())) {
 					//System.out.println("I'm sorry, there are no books by that author currently in the library.");
 				}
-				
-				
 			}
-			
 			
 			CheckReturn.checkoutBook(b, scan);
 }
@@ -305,6 +302,29 @@ public class Book {
 			}
 			CheckReturn.checkoutBook(b, scan);
 }		
+		
+		
+		public static void returnBook(ArrayList<Book> bookArrayList, Scanner input) {
+			Scanner scan = new Scanner(System.in);
+			System.out.print("Please enter the title of the book you are returning: ");
+			String title = input.nextLine();
+			System.out.println();
+			System.out.format("%-30s%-30s%-30s", "TITLE", "AUTHOR", "STATUS");
+			System.out.println("");
+			Book b = null;
+			for (int i = 0; i < bookArrayList.size(); i++) {
+				b = bookArrayList.get(i);
+				if (((b.getTitle()).toLowerCase()).contains(title.toLowerCase())) {
+					System.out.format("%-30s%-30s%-12s", b.getTitle(), b.getAuthor(),  b.getStatus());
+					System.out.println("");
+					break;
+				} 
+				else {
+					//System.out.println("I'm sorry, there are no books with that keyword currently in the library.");
+				}
+			}
+			CheckReturn.returnBook(b, scan);
+}
 		
 		
 
