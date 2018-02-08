@@ -54,6 +54,8 @@ public class LibraryTerminalApp {
 		}	
 			System.out.println();
 			System.out.println("Thank you for visiting to Grand Circus Library!\nGoodbye!");
+			
+			Book.writeToFile(libraryList);
 		
 	}
 
