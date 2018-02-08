@@ -42,11 +42,8 @@ public class LibraryTerminalApp {
 				Book.keywordSearch(libraryList, scan);	
 			}
 			if (choice == 4) {
-				System.out.println();
-				System.out.println("Which book would you like to return?");
-				System.out.println();
-				display(libraryList);
-				
+
+				//return a book?
 				
 			}
 		}
