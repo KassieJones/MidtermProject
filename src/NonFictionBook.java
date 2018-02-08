@@ -1,4 +1,3 @@
-import java.util.Date;
 
 public class NonFictionBook extends Book {
 	private boolean handsOff;
@@ -7,7 +6,7 @@ public class NonFictionBook extends Book {
 		
 	}
 	
-	public NonFictionBook(String title, String author, boolean status, Date dueDate, String genre, boolean handsOff) {
+	public NonFictionBook(String title, String author, boolean status, String dueDate, String genre, boolean handsOff) {
 		super(title, author, status, dueDate, genre);
 		this.handsOff = handsOff;
 	}

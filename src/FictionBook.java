@@ -7,12 +7,12 @@ public class FictionBook extends Book {
 
 	}
 
-	public FictionBook(String title, String author, boolean status, Date dueDate, String genre, int rating) {
+	public FictionBook(String title, String author, boolean status, String dueDate, String genre, int rating) {
 		super(title, author, status, dueDate, genre);
 		this.rating = rating;
 	}
 	
-	public FictionBook(String title, String author, boolean status, Date dueDate, String genre) {
+	public FictionBook(String title, String author, boolean status, String dueDate, String genre) {
 		super(title, author, status, dueDate, genre);
 	}
 
