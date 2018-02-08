@@ -15,13 +15,37 @@ import java.util.Date;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
 
 public class Book {
-	private String title;
+/*	private String title;
 	private String author;
 	private boolean status;
 	private Date dueDate;
 	private String genre;
+	*/
+	@SerializedName("rating")
+	@Expose
+	public Integer rating;
+	@SerializedName("title")
+	@Expose
+	public String title;
+	@SerializedName("author")
+	@Expose
+	public String author;
+	@SerializedName("status")
+	@Expose
+	public Boolean status;
+	@SerializedName("dueDate")
+	@Expose
+	public Date dueDate;
+	@SerializedName("genre")
+	@Expose
+	public String genre;
+	@SerializedName("handsOff")
+	@Expose
+	public Boolean handsOff;
 
 	public Book() {
 
@@ -179,5 +203,44 @@ public class Book {
 	public void checkOutBook(Book book) {
 		book.setStatus(false);
 	}
+	
+	// Methods for Importing JSON file
+	
+	public Book withRating(Integer rating) {
+		this.rating = rating;
+		return this;
+		}
+
+		public Book withTitle(String title) {
+		this.title = title;
+		return this;
+		}
+
+		public Book withAuthor(String author) {
+		this.author = author;
+		return this;
+		}
+
+		public Book withStatus(Boolean status) {
+		this.status = status;
+		return this;
+		}
+
+		public Book withDueDate(Date dueDate) {
+		this.dueDate = dueDate;
+		return this;
+		}
+
+		public Book withGenre(String genre) {
+		this.genre = genre;
+		return this;
+		}
+
+		public Book withHandsOff(Boolean handsOff) {
+		this.handsOff = handsOff;
+		return this;
+		}
+		
+		// End of JSON methods
 }
 
