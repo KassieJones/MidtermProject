@@ -295,7 +295,10 @@ public static void createFile(String fileString) {
 			}
 			
 			
+			
 			CheckReturn.checkoutBook(b, scan);
+			LocalDate dueDate = LocalDate.now().plusWeeks(2);
+			System.out.println(dueDate.toString());
 }
 
 		
@@ -321,6 +324,8 @@ public static void createFile(String fileString) {
 				}
 			}
 			CheckReturn.checkoutBook(b, scan);
+			LocalDate dueDate = LocalDate.now().plusWeeks(2);
+			System.out.println(dueDate.toString());
 }		
 		
 		
