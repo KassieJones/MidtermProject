@@ -22,7 +22,7 @@ public class Book {
 /*	private String title;
 	private String author;
 	private boolean status;
-	private Date dueDate;
+	private String dueDate;
 	private String genre;
 	*/
 	@SerializedName("rating")
@@ -39,7 +39,7 @@ public class Book {
 	public Boolean status;
 	@SerializedName("dueDate")
 	@Expose
-	public Date dueDate;
+	public String dueDate;
 	@SerializedName("genre")
 	@Expose
 	public String genre;
@@ -51,7 +51,7 @@ public class Book {
 
 	}
 
-	public Book(String title, String author, boolean status, Date dueDate, String genre) {
+	public Book(String title, String author, boolean status, String dueDate, String genre) {
 		this.title = title;
 		this.author = author;
 		this.status = status;
@@ -83,11 +83,11 @@ public class Book {
 		this.status = status;
 	}
 
-	public Date getDueDate() {
+	public String getDueDate() {
 		return dueDate;
 	}
 
-	public void setDueDate(Date dueDate) {
+	public void setDueDate(String dueDate) {
 		this.dueDate = dueDate;
 	}
 
@@ -226,7 +226,7 @@ public class Book {
 		return this;
 		}
 
-		public Book withDueDate(Date dueDate) {
+		public Book withDueDate(String dueDate) {
 		this.dueDate = dueDate;
 		return this;
 		}
