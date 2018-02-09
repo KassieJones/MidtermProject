@@ -269,17 +269,15 @@ public class Book {
 			if (((b.getAuthor()).toLowerCase()).contains(author.toLowerCase())) {
 				System.out.format("%-30s%-30s%-12s", b.getTitle(), b.getAuthor(), b.getStatus());
 				System.out.println("");
+				CheckReturn.checkoutBook(b, scan);
+			//	Book.removeBook(bookArrayList, b);
+				System.out.println();
 				break;
 			}
-			if (!((b.getAuthor()).toLowerCase()).contains(author.toLowerCase())) {
-				// System.out.println("I'm sorry, there are no books by that author currently in
-				// the library.");
-			}
 		}
-
-		CheckReturn.checkoutBook(b, scan);
-		Book.removeBook(bookArrayList, b);
-		System.out.println();
+		if (!((b.getAuthor()).toLowerCase()).contains(author.toLowerCase())) {
+			System.out.println("I'm sorry, there are no books by that author currently in the library.\nYou will now be taken back to the main menu.");
+		}
 	}
 
 	public static void keywordSearch(ArrayList<Book> bookArrayList, Scanner input) {
@@ -295,16 +293,15 @@ public class Book {
 			if (((b.getTitle()).toLowerCase()).contains(title.toLowerCase())) {
 				System.out.format("%-30s%-30s%-12s", b.getTitle(), b.getAuthor(), b.getStatus());
 				System.out.println("");
+				CheckReturn.checkoutBook(b, scan);
+			//	Book.removeBook(bookArrayList, b);
+				System.out.println();
 				break;
-			} else {
-				// System.out.println("I'm sorry, there are no books with that keyword currently
-				// in the library.");
 			}
 		}
-		CheckReturn.checkoutBook(b, scan);
-		Book.removeBook(bookArrayList, b);
-		System.out.println();
-		
+		if (!((b.getTitle()).toLowerCase()).contains(title.toLowerCase())) {
+			System.out.println("I'm sorry, there are no books with that keyword currently in the library.\nYou will now be taken back to the main menu.");			
+		}
 	}
 
 	public static void returnBook(ArrayList<Book> bookArrayList, Scanner input) {
@@ -321,10 +318,7 @@ public class Book {
 				System.out.format("%-30s%-30s%-12s", b.getTitle(), b.getAuthor(), b.getStatus());
 				System.out.println("");
 				break;
-			} else {
-				// System.out.println("I'm sorry, there are no books with that keyword currently
-				// in the library.");
-			}
+			} 
 		}
 		CheckReturn.returnBook(b, scan);
 		System.out.println();
@@ -358,6 +352,6 @@ public class Book {
 			bookArrayList.remove(bookNum);
 
 		}
-		//input.close();
+		// input.close();
 	}
 }
