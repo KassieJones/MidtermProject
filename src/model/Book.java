@@ -82,10 +82,6 @@ public class Book {
 		this.author = author;
 	}
 
-	// public boolean isStatus() {
-	// return status;
-	// }
-
 	public String getStatus() {
 		return status;
 	}
@@ -156,7 +152,6 @@ public class Book {
 			library = gson.fromJson(jsonElement, type);
 
 		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
@@ -194,7 +189,6 @@ public class Book {
 			writer.close();
 
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			// e.printStackTrace();
 		}
 	}
@@ -270,13 +264,13 @@ public class Book {
 				System.out.format("%-30s%-30s%-12s", b.getTitle(), b.getAuthor(), b.getStatus());
 				System.out.println("");
 				CheckReturn.checkoutBook(b, scan);
-			//	Book.removeBook(bookArrayList, b);
 				System.out.println();
 				break;
 			}
 		}
 		if (!((b.getAuthor()).toLowerCase()).contains(author.toLowerCase())) {
-			System.out.println("I'm sorry, there are no books by that author currently in the library.\nYou will now be taken back to the main menu.");
+			System.out.println(
+					"I'm sorry, there are no books by that author currently in the library.\nYou will now be taken back to the main menu.");
 		}
 	}
 
@@ -294,13 +288,13 @@ public class Book {
 				System.out.format("%-30s%-30s%-12s", b.getTitle(), b.getAuthor(), b.getStatus());
 				System.out.println("");
 				CheckReturn.checkoutBook(b, scan);
-			//	Book.removeBook(bookArrayList, b);
 				System.out.println();
 				break;
 			}
 		}
 		if (!((b.getTitle()).toLowerCase()).contains(title.toLowerCase())) {
-			System.out.println("I'm sorry, there are no books with that keyword currently in the library.\nYou will now be taken back to the main menu.");			
+			System.out.println(
+					"I'm sorry, there are no books with that keyword currently in the library.\nYou will now be taken back to the main menu.");
 		}
 	}
 
@@ -319,41 +313,80 @@ public class Book {
 				CheckReturn.returnBook(b, scan);
 				System.out.println("");
 				break;
-			} 
+			}
 		}
 		if (!((b.getTitle()).toLowerCase()).contains(title.toLowerCase())) {
-			System.out.println("I'm sorry, that book does not belong to this library.\nYou will now be taken back to the main menu.");
+			System.out.println(
+					"I'm sorry, that book does not belong to this library.\nYou will now be taken back to the main menu.");
 		}
 
 	}
 
 	public static void addBook(ArrayList<Book> bookArrayList, Scanner input) {
 		Scanner scan = new Scanner(System.in);
-		System.out.print("Please enter the title of the book:");
-		String bookTitle = input.nextLine();
-		System.out.print("Please enter the author of the book:");
-		String bookAuthor = input.nextLine();
-		System.out.print("Please enter the genre of the book:");
-		String bookGenre = input.nextLine();
-		String status = "AVAILABLE";
-		String dueDate = " ";
+		System.out.println("Would you like to add a new book to the library? (y /n)");
+		String cont = scan.nextLine();
 
-		bookArrayList.add(new Book(bookTitle, bookAuthor, status, dueDate, bookGenre));
+		if (cont.equalsIgnoreCase("y")) {
+			System.out.print("Please enter the title of the book:");
+			String bookTitle = input.nextLine();
+			System.out.print("Please enter the author of the book:");
+			String bookAuthor = input.nextLine();
+			System.out.print("Please enter the genre of the book:");
+			String bookGenre = input.nextLine();
+			String status = "AVAILABLE";
+			String dueDate = " ";
+			bookArrayList.add(new Book(bookTitle, bookAuthor, status, dueDate, bookGenre));
 
+			System.out.println();
+			System.out.println(
+					"'" + bookTitle + "'" + " is now listed in the library terminal and available to be checked out.");
+			System.out.println();
+		}
 	}
 
 	public static void removeBook(ArrayList<Book> bookArrayList, Book book) {
 		Scanner input = new Scanner(System.in);
 
-		System.out.print("Would you like to remove this book out? (y / n)");
+		System.out.print("Would you like to remove a book from the library? (y / n)");
 		String remove = input.nextLine();
 		System.out.println();
 
-		if (remove.equalsIgnoreCase("y")) {
-			int bookNum = bookArrayList.indexOf(book);
-			bookArrayList.remove(bookNum);
-
+		if (remove.equalsIgnoreCase("n")) {
+			System.out.println();
+			System.out.println("You will now be taken back to the main menu.");
 		}
-		// input.close();
+
+		if (remove.equalsIgnoreCase("y")) {
+
+			System.out.print("Please enter the title of the book you are removing: ");
+			String title = input.nextLine();
+			System.out.println();
+			System.out.format("%-30s%-30s%-30s", "TITLE", "AUTHOR", "STATUS");
+			System.out.println("");
+			Book b = null;
+			for (int i = 0; i < bookArrayList.size(); i++) {
+				b = bookArrayList.get(i);
+				if (((b.getTitle()).toLowerCase()).contains(title.toLowerCase())) {
+					System.out.format("%-30s%-30s%-12s", b.getTitle(), b.getAuthor(), b.getStatus());
+
+					int bookNum = bookArrayList.indexOf(b);
+					bookArrayList.remove(bookNum);
+
+					System.out.println();
+					System.out.println();
+					System.out.println("'" + b.getTitle() + "'"
+							+ " is no longer listed in the library terminal.\nYou will now be taken back to the main menu.");
+					System.out.println("");
+					break;
+				}
+			}
+			if (!((b.getTitle()).toLowerCase()).contains(title.toLowerCase())) {
+				System.out.println();
+				System.out.println(
+						"I'm sorry, that book does not belong to this library.\nYou will now be taken back to the main menu.");
+				System.out.println();
+			}
+		}
 	}
 }

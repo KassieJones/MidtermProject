@@ -16,7 +16,7 @@ public class LibraryTerminalApp {
 
 		ArrayList<Book> libraryList = new ArrayList<Book>();
 		libraryList = Book.readFromFile("Library.json");
-		
+
 		System.out.println("Welcome to the Grand Circus Library!");
 		System.out.println();
 
@@ -27,7 +27,7 @@ public class LibraryTerminalApp {
 
 			System.out.println();
 			choice = Validator.getInt(scan,
-					" 1 - Refresh Catalog of Books\n 2 - Search Books by Author\n 3 - Search Books by Title Keyword\n 4 - Return a Book\n 5 - Add New Book to Library\n 6 - Quit",
+					" 1 - Refresh Catalog of Books\n 2 - Search Books by Author\n 3 - Search Books by Title Keyword\n 4 - Return a Book\n 5 - Librarian Options\n 6 - Quit",
 					1, 6);
 			System.out.println();
 
@@ -56,18 +56,15 @@ public class LibraryTerminalApp {
 			}
 			if (choice == 5) {
 				Book.addBook(libraryList, scan);
+				Book.removeBook(libraryList, null);
 				clearScreen();
 				display(libraryList);
 				Book.writeToFile(libraryList);
 			}
-			
-			
-		}	
-			clearScreen();
-			System.out.println("Thank you for visiting to Grand Circus Library!\nGoodbye!");
-			
-			Book.writeToFile(libraryList);
-		
+		}
+		clearScreen();
+		System.out.println("Thank you for visiting to Grand Circus Library!\nGoodbye!");
+		Book.writeToFile(libraryList);
 	}
 
 	private static void display(ArrayList<Book> libraryList) {
@@ -76,14 +73,10 @@ public class LibraryTerminalApp {
 		}
 	}
 
-	public ArrayList<Book> makeList(String name) {
-		ArrayList<Book> bookList = new ArrayList<Book>();
-		return null;
-	}
 
 	public static void clearScreen() {
-		for (int i = 0; i < 25; i++) {
+		for (int i = 0; i < 50; i++) {
 			System.out.println(" ");
-		}	
+		}
 	}
 }
