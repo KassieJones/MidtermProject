@@ -21,7 +21,7 @@ public class CheckReturn {
 	}
 
 	public static void returnBook(Book book, Scanner input) {
-		System.out.print("Would you like to return this book out? (y / n)");
+		System.out.print("Would you like to return this book to the library? (y / n)");
 		String checkout = input.nextLine();
 		System.out.println();
 
