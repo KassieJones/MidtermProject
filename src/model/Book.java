@@ -316,12 +316,14 @@ public class Book {
 			b = bookArrayList.get(i);
 			if (((b.getTitle()).toLowerCase()).contains(title.toLowerCase())) {
 				System.out.format("%-30s%-30s%-12s", b.getTitle(), b.getAuthor(), b.getStatus());
+				CheckReturn.returnBook(b, scan);
 				System.out.println("");
 				break;
 			} 
 		}
-		CheckReturn.returnBook(b, scan);
-		System.out.println();
+		if (!((b.getTitle()).toLowerCase()).contains(title.toLowerCase())) {
+			System.out.println("I'm sorry, that book does not belong to this library.\nYou will now be taken back to the main menu.");
+		}
 
 	}
 
